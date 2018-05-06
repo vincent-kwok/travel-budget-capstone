@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Travel Budgeting</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Google fonts - Open Sans-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="favicon.png">
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <div id="all">
+      <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+          <!-- sidebar -->
+          <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+            <div class="sidebar-content">
+              <h1 class="sidebar-heading"> <a href="/#/">BUDGET TRIP</a></h1>
+              <p class="sidebar-p">Traveling is fun. You get to see new landmarks, eat at new restaurants, attend new events, and leave your responsibilities behind.</p>
+              <p class="sidebar-p">But sometimes coming back from a trip can leave you regreting some purchases.</p>
+              <p class="sidebar-p">That's where budgeting comes in handy.</p>
+              <p class="sidebar-p">Decide what to spend ahead of time so you won't have to feel guilty about it later.</p>
+              <ul class="sidebar-menu"> 
+                <li><a href="/#/signup">Sign Up</a></li>
+                <li><a href="/#/login">Log In</a></li>
+
+                <li><a href="/#/trips/new">New Trip</a></li>
+                <!-- <li><a href=" '/#/trips/'+trip.id ">Show Trip</a></li> -->
+                <li><a href="/#/logout">Log Out</a></li>
+              </ul>
+              <p class="social"><a href="#" data-animate-hover="pulse" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" data-animate-hover="pulse" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" data-animate-hover="pulse" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" title="" class="external instagram"><i class="fa fa-instagram"></i></a><a href="#" data-animate-hover="pulse" class="email"><i class="fa fa-envelope"></i></a></p>
+              <div class="copyright">
+                <p class="credit">&copy;2018 Vincent Kwok | Template by <a href="https://bootstrapious.com/e-commerce-templates" class="external">Bootstrapious</a></p>
+                <!-- Please do not remove the backlink to us, unless you support the development at https://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :) -->
+              </div>
+            </div>
+          </div>
+          <!-- sidebar end -->
+          <div class="col-xs-12 col-sm-8 col-md-9 content-column">
+            <div class="small-navbar visible-xs">
+              <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+              <h1 class="small-navbar-heading"> <a href="index.html">BUDGET TRIP</a></h1>
+            </div>
+            <!-- vue.js -->
+            <div id="vue-app">
+              <router-view></router-view>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Javascript files-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"> </script>
+    <script src="js/jquery.cookie.js"> </script>
+    <script src="js/ekko-lightbox.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/front.js"></script>
+  </body>
+</html>
+
+<template id="home-page">
+  <div class="vue-component">
+    <!-- v-for -->
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item" v-for="trip in trips"> 
+      <div class="box-masonry"><a href="detail.html" title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="img/tripBackgrounds/chicago.jpg" alt="" class="img-responsive"></a>
+        <div class="box-masonry-text">
+          <div class="box-masonry-desription">
+            <h4>{{ trip.city }}</h4>
+            <h4>{{ trip.state }}</h4>
+            <h5> start: {{ trip.start_date }}</h5>
+            <h5> end: {{ trip.end_date }}</h5>
+            <h5>Budget</h5>
+            <h6> flight: {{ trip.budget_flight }}</h6>
+            <h6> accom: {{ trip.budget_accom }}</h6>
+            <h6> food: {{ trip.budget_food }}</h6>
+            <h6> fun: {{ trip.budget_fun }}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- portfolio -->
+    <!-- <div class="grid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item"> 
+          <div class="box-masonry"><a href="detail.html" title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="img/portfolio/business-card-26.jpg" alt="" class="img-responsive"></a>
+            <div class="box-masonry-text">
+              <h4> <a href="detail.html">Name of the work 2</a></h4>
+              <div class="box-masonry-desription">
+                <p> When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item"> 
+          <div class="box-masonry"><a href="detail.html" title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="img/portfolio/a4-paper.jpg" alt="" class="img-responsive"></a>
+            <div class="box-masonry-text">
+              <h4> <a href="detail.html">Name of the work 2</a></h4>
+              <div class="box-masonry-desription">
+                <p> When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item"> 
+          <div class="box-masonry"><a href="detail.html" title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="img/portfolio/envelope-brand.jpg" alt="" class="img-responsive"></a>
+            <div class="box-masonry-text">
+              <h4> <a href="detail.html">Item with image</a></h4>
+              <div class="box-masonry-desription">
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.  A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- portfolio end -->
+
+    <!-- Icons Grid -->
+    <!-- <section class="features-icons bg-light text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto text-primary"></i>
+              </div>
+              <h3>Fully Responsive</h3>
+              <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-layers m-auto text-primary"></i>
+              </div>
+              <h3>Bootstrap 4 Ready</h3>
+              <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3>Easy to Use</h3>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Testimonials -->
+    <!-- <section class="testimonials text-center bg-light">
+      <div class="container">
+        <h2 class="mb-5">What people are saying...</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">
+              <h5>Margaret E.</h5>
+              <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
+              <h5>Fred S.</h5>
+              <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
+              <h5>Sarah W.</h5>
+              <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Call to Action -->
+    <!-- <section class="call-to-action text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+              <div class="form-row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                  <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+                </div>
+                <div class="col-12 col-md-3">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  </div>
+
+</template>
+
+<template id="trips-new-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h4>New Trip</h4>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+
+      <div class="form-group">
+        <label>User Id:</label>
+        <input type="text" class="form-control" v-model="user_id">
+      </div>
+
+      <div class="form-group">
+        <label>City:</label>
+        <input type="text" class="form-control" v-model="city">
+      </div>
+
+      <div class="form-group">
+        <label>State:</label>
+        <input type="text" class="form-control" v-model="state">
+      </div>
+
+      <div class="form-group">
+        <label>Date Arriving:</label>
+        <!-- <input type="text" class="form-control" v-model="start_date"> -->
+        <input id="meeting" type="date" class="form-control" v-model="start_date" value=""/>
+      </div>
+
+      <div class="form-group">
+        <label>Date Leaving:</label>
+        <!-- <input type="text" class="form-control" v-model="end_date"> -->
+        <input id="meeting" type="date" class="form-control" v-model="end_date" value=""/>
+      </div>
+
+      <h5>Budget:</h5>
+
+      <div class="form-group">
+        <label>Flight:</label>
+        <input type="text" class="form-control" v-model="budget_flight">
+      </div>
+
+      <div class="form-group">
+        <label>Accommodations:</label>
+        <input type="text" class="form-control" v-model="budget_accom">
+      </div>
+
+      <div class="form-group">
+        <label>Food:</label>
+        <input type="text" class="form-control" v-model="budget_food">
+      </div>
+
+      <div class="form-group">
+        <label>Entertainment:</label>
+        <input type="text" class="form-control" v-model="budget_fun">
+      </div>
+
+      <a class="btn btn-primary" v-on:click="submit()">Submit</a>
+
+    </div>
+
+  
+
+
+  </div>
+</template>
+
+<template id="trips-show-page">
+  <div class="vue-component">
+
+    <h4>{{ trip.city }}</h4>
+    <h4>{{ trip.state }}</h4>
+    <h5>{{ trip.start_date }}</h5>
+    <h5>{{ trip.end_date }}</h5>
+    <h6>{{ trip.budget_flight }}</h6>
+    <h6>{{ trip.budget_accom }}</h6>
+    <h6>{{ trip.budget_food }}</h6>
+    <h6>{{ trip.budget_fun }}</h6>
+    <button class="btn btn-primary" href="/#/">Back to all trips</button>
+
+  </div>
+</template>
+
+<template id="signup-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Signup</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" class="form-control" v-model="email">
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" class="form-control" v-model="password">
+      </div>
+      <div class="form-group">
+        <label>Password confirmation:</label>
+        <input type="password" class="form-control" v-model="passwordConfirmation">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+
+  </div>
+</template>
+
+<template id="login-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Login</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" class="form-control" v-model="email">
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" class="form-control" v-model="password">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+
+  </div>
+</template>
