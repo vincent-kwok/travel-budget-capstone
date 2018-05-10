@@ -1,4 +1,4 @@
-/* global Vue, VueRouter, axios */
+/* global Vue, VueRouter, axios, google */
 
 var useCachedTrips = true;
 // tried to generate random picture for cards
@@ -12,8 +12,9 @@ var HomePage = {
       trips: [],
       currentTrip: {
         user_id: "",
-        city: "",
-        state: "",
+        destination: "",
+        home_airport: "",
+        destination_airport: "",
         start_date: "",
         end_date: "",
         budget_flight: "",
@@ -54,26 +55,63 @@ var HomePage = {
 
 var TripsNewPage = {
   template: "#trips-new-page",
+  mounted() {
+    this.autocomplete = new google.maps.places.Autocomplete(
+      (this.$refs.autocomplete),
+      {types: ['geocode']}
+    );
+    this.autocomplete.addListener('place_changed', () => {
+      let place = this.autocomplete.getPlace();
+      let ac = place.address_components;
+      let lat = place.geometry.location.lat();
+      let lon = place.geometry.location.lng();
+      let city = ac[0]["short_name"];
+
+      console.log(`The user picked ${city} with the coordinates ${lat}, ${lon}`);
+    });
+  },
   data: function() {
     return {
       user_id: "",
-      city: "",
-      state: "",
+      destination: "",
+      home_airport: "",
+      destination_airport: "",
       start_date: "",
       end_date: "",
       budget_flight: "",
       budget_accom: "",
       budget_food: "",
       budget_fun: "",
-      errors: []
+      errors: [],
+      currentTrip: {
+        user_id: "",
+        destination: this.destination,
+        home_airport: this.home_airport,
+        destination_airport: this.destination_airport,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        budget_flight: "",
+        budget_accom: "",
+        budget_food: "",
+        budget_fun: "",
+      },
+      flights: this.flights,
     };
+  },
+  created: function() {
+    axios.get("http://developer.goibibo.com/api/search/?app_id=32e4551b&app_key=5a51d0b0ff157bae5674f87076e24c92&format=json&source=lga&destination=ord&dateofdeparture=20180602&dateofarrival=20180612&seatingclass=E&adults=1&children=0&infants=0&counter=100").then(
+      function(response) {
+        this.trips = response.data;
+      }.bind(this)
+    );
   },
   methods: {
     submit: function() {
       var params = {
         user_id: this.user_id,
-        city: this.city,
-        state: this.state,
+        destination: this.destination,
+        home_airport: this.home_airport,
+        destination_airport: this.destination_airport,
         start_date: this.start_date,
         end_date: this.end_date,
         budget_flight: this.budget_flight,
@@ -91,7 +129,41 @@ var TripsNewPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-    }
+    },
+    setCurrentTrip: function(inputTrip) {
+      this.currentTrip = inputTrip;
+    },
+    checkFlights: function() {
+      var params = {
+        home_airport: this.home_airport,
+        destination_airport: this.destination_airport,
+        start_date: this.start_date,
+        end_date: this.end_date,
+      };
+      console.log(params);
+      axios
+        .get("/v1/flights", {params: params})
+        .then(function(response) {
+          this.flights = response.data;
+          console.log('flight data', this.flights);
+        }.bind(this)
+        );
+    },
+    checkHotels: function() {
+      var params = {
+        destination: this.destination,
+        start_date: this.start_date,
+        end_date: this.end_date,
+      };
+      console.log(params);
+      axios
+        .get("/v1/hotels", {params: params})
+        .then(function(response) {
+          this.hotels = response.data;
+          console.log('hotel data', this.hotels);
+        }.bind(this)
+        );
+    },
   }
 };
 
@@ -101,8 +173,9 @@ var TripsShowPage = {
     return {
       trip: {
         user_id: "user_id",
-        city: "city",
-        state: "state",
+        destination: "",
+        home_airport: "",
+        destination_airport: "",
         start_date: "start_date",
         end_date: "end_date",
         budget_flight: "budget_flight",

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     get "/trips/:id" => "trips#show"
     patch "/trips/:id" => "trips#update"
     delete "/trips/:id" => "trips#destroy"
-    get "/flights" => "trips#index"
 
+    get "/flights" => "flights#index"
+    get "/hotels" => "hotels#index"
+    
     get "/users" => "users#index"
     post "/users" => "users#create"
 

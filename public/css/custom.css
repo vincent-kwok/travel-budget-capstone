@@ -1,1 +1,6 @@
 /* your styles go here */
+
+body {
+   background-image: url("../concrete_wall_2.png");
+   background-attachment: fixed;
+}

@@ -1,18 +1,20 @@
 class V1::TripsController < ApplicationController
   # before_action :authenticate_admin
-  # before_action :authenticate_user
+  before_action :authenticate_user
   
-  # def index
-  #   # trips = current_user.trips
-  #   trips = Trip.all
-  #   render json: trips.as_json
-  # end
+  def index
+    trips = current_user.trips
+    # trips = Trip.all
+    render json: trips.as_json
+  end
 
   def create
     trip = Trip.new(
       user_id: current_user.id,
-      city: params[:city],
-      state: params[:state],
+      # user_id: 2,
+      destination: params[:destination],
+      home_airport: params[:home_airport],
+      destination_airport: params[:destination_airport],
       start_date: params[:start_date],
       end_date: params[:end_date],
       budget_flight: params[:budget_flight],
@@ -40,8 +42,9 @@ class V1::TripsController < ApplicationController
 
   def update
     trip = Trip.find_by(id: params[:id])
-    trip.city = params[:city] || trip.city
-    trip.state = params[:state] || trip.state
+    trip.destination = params[:destination] || trip.destination
+    trip.home_airport = params[:home_airport] || trip.home_airport
+    trip.destination_airport = params[:destination_airport] || trip.destination_airport
     trip.start_date = params[:start_date] || trip.start_date
     trip.end_date = params[:end_date] || trip.end_date
     trip.budget_flight = params[:budget_flight] || trip.budget_flight
@@ -59,32 +62,6 @@ class V1::TripsController < ApplicationController
     trip = Trip.find_by(id: params[:id])
     trip.destroy
     render json: {message: "Trip has been deleted."}
-  end
-
-  def index
-
-    source = "LGA"
-    destination = "MDW"
-    dateofdeparture = "20180701"
-    dateofarrival = "20180707"
-    # seatingclass: economy: E, business: B
-    seatingclass = "E"
-    adults = "1"
-    children = "0"
-    infants = "0"
-    # counter: domestic = 100, international = 0)
-    counter = "100"
-
-    response = Unirest.get("http://developer.goibibo.com/api/search/?app_id=32e4551b&app_key=5a51d0b0ff157bae5674f87076e24c92&format=json&source=#{source}&destination=#{destination}&dateofdeparture=#{dateofdeparture}&dateofarrival=#{dateofarrival}&seatingclass=#{seatingclass}&adults=#{adults}&children=#{children}&infants=#{infants}&counter=#{counter}")
-    
-    # 5.times do
-    #   x = 1
-    #   flights << response.body["data"]["onwardflights"][x]["fare"]["adulttotalfare"]
-    #   flights << response.body["data"]
-    #   x += 1
-    # end
-
-    render json: response.body["data"]
   end
 
 end

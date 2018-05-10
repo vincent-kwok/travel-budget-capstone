@@ -15,8 +15,9 @@ User.create(email: "nina@email.com", password: "password", admin: false)
 
 Trip.create(
   user_id: 2,
-  city: "boston",
-  state: "ma",
+  destination: "boston",
+  home_airport: "jfk",
+  destination_airport: "bos",
   start_date: "2018-03-04",
   end_date: "2018-03-10",
   budget_flight: 400,
@@ -27,8 +28,9 @@ Trip.create(
 
 Trip.create(
   user_id: 3,
-  city: "richmond",
-  state: "va",
+  destination: "richmond",
+  home_airport: "den",
+  destination_airport: "ric",
   start_date: "2018-04-01",
   end_date: "2018-04-04",
   budget_flight: 150,
@@ -39,8 +41,9 @@ Trip.create(
 
 Trip.create(
   user_id: 4,
-  city: "miami",
-  state: "fl",
+  destination: "miami",
+  home_airport: "sfo",
+  destination_airport: "mia",
   start_date: "2018-05-22",
   end_date: "2018-05-27",
   budget_flight: 450,
@@ -51,8 +54,9 @@ Trip.create(
 
 Trip.create(
   user_id: 2,
-  city: "las vegas",
-  state: "nv",
+  destination: "las vegas",
+  home_airport: "jfk",
+  destination_airport: "las",
   start_date: "2018-06-02",
   end_date: "2018-06-30",
   budget_flight: 120,
@@ -63,8 +67,9 @@ Trip.create(
 
 Trip.create(
   user_id: 4,
-  city: "portland",
-  state: "or",
+  destination: "portland",
+  home_airport: "sfo",
+  destination_airport: "pdx",
   start_date: "2018-06-02",
   end_date: "2018-06-14",
   budget_flight: 500,
@@ -75,8 +80,9 @@ Trip.create(
 
 Trip.create(
   user_id: 3,
-  city: "dallas",
-  state: "tx",
+  destination: "dallas",
+  home_airport: "den",
+  destination_airport: "dfw",
   start_date: "2018-06-14",
   end_date: "2018-06-28",
   budget_flight: 700,
@@ -87,8 +93,9 @@ Trip.create(
 
 Trip.create(
   user_id: 3,
-  city: "houston",
-  state: "tx",
+  destination: "houston",
+  home_airport: "den",
+  destination_airport: "iah",
   start_date: "2018-07-24",
   end_date: "2018-07-26",
   budget_flight: 400,
@@ -99,8 +106,9 @@ Trip.create(
 
 Trip.create(
   user_id: 2,
-  city: "atlanta",
-  state: "ga",
+  destination: "atlanta",
+  home_airport: "jfk",
+  destination_airport: "atl",
   start_date: "2018-09-15",
   end_date: "2018-09-22",
   budget_flight: 240,
@@ -111,8 +119,9 @@ Trip.create(
 
 Trip.create(
   user_id: 5,
-  city: "chicago",
-  state: "il",
+  destination: "chicago",
+  home_airport: "lax",
+  destination_airport: "ord",
   start_date: "2018-12-30",
   end_date: "2019-02-02",
   budget_flight: 160,
