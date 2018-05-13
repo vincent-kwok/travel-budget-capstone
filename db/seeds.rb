@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Expense.create(category: "food", amount: 30, description: "lobster dinner", trip_id: 1)
+# Expense.create(category: "food", amount: 8, description: "sandwich", trip_id: 3)
 # Expense.create(category: "food", amount: 8, description: "bagel and coffee", trip_id: 2)
 # Expense.create(category: "food", amount: 13, description: "fish tacos", trip_id: 2)
 # Expense.create(category: "entertainment", amount: 25, description: "comedy show", trip_id: 2)

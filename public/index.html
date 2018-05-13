@@ -131,7 +131,7 @@
               <h6> stay: {{ trip.budget_accom }}</h6>
               <h6> food: {{ trip.budget_food }}</h6>
               <h6> fun: {{ trip.budget_fun }}</h6>
-              <a v-bind:href="'/#/expenses/' + 2 " class="btn btn-primary">View Trip Expenses</a>
+              <a v-bind:href=" '/#/expenses?trip_id=' + trip.id " class="btn btn-primary">View Trip Expenses</a>
             </div>
           </div>
         </div>
@@ -289,11 +289,14 @@
 
 <template id="expenses-show-page">
   <div class="vue-component">
-    <h5>category: {{ expense.category }} | description: {{ expense.description }} | amount: {{ expense.amount }}</h5>
+    <a class="btn btn-primary" href="/#/expenses/new" title="" class="box-masonry-image with-hover-overlay with-hover-icon">Add Expense</a>
+    <h4>category | description | amount</h4>
+    <div v-for="expense in expenses">
+      <h5>{{ expense.category }} | {{ expense.description }} | {{ expense.amount }}</h5>
+    </div>
     <a class="btn btn-primary" href="/#/">Back to trip</a>
   </div>
 </template>
-
 
 <template id="signup-page">
   <div class="vue-component">

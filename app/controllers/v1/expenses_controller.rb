@@ -1,6 +1,7 @@
 class V1::ExpensesController < ApplicationController
   def index
-    expenses = Expense.all
+    # expenses = Expense.all
+    expenses = Trip.find_by(id: params[:trip_id]).expenses
     render json: expenses.as_json
   end
 

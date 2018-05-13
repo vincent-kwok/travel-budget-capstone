@@ -194,21 +194,29 @@ var ExpensesShowPage = {
   template: "#expenses-show-page",
   data: function() {
     return {
-      expense: {
-        category: "category goes here",
-        description: "description goes here",
-        amount: "amount goes here",
-      }
+      message: "Welcome to Vue.js!",
+      expenses: [],
+      currentExpense: {
+        category: "",
+        description: "",
+        amount: "",
+      },
     };
   },
   created: function() {
-    axios.get("v1/expenses/" + this.$route.params.id).then(
+    axios.get("v1/expenses?trip_id=" + this.$route.query.trip_id).then(
       function(response) {
-        this.expense = response.data;
+        this.expenses = response.data;
+        // filter expenses by trip here?
+        console.log(this.expenses);
       }.bind(this)
     );
   },
-  methods: {},
+  methods: {
+    setCurrentExpense: function(inputExpense) {
+      this.currentExpense = inputExpense;
+    },
+  },
   computed: {}
 };
 
@@ -291,7 +299,7 @@ var router = new VueRouter({
     { path: "/trips/new", component: TripsNewPage },
     { path: "/trips/:id", component: TripsShowPage },
     { path: "/expenses/new", component: ExpensesNewPage },
-    { path: "/expenses/:id", component: ExpensesShowPage },
+    { path: "/expenses", component: ExpensesShowPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage }
