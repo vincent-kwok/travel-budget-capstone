@@ -1815,7 +1815,7 @@ label {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 75%;
   height: 38px;
   padding: 6px 12px;
   font-size: 16px;

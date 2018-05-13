@@ -9,10 +9,16 @@ Rails.application.routes.draw do
     delete "/trips/:id" => "trips#destroy"
 
     get "/flights" => "flights#index"
+    get "/airports" => "airports#index"
     get "/hotels" => "hotels#index"
     
     get "/users" => "users#index"
     post "/users" => "users#create"
 
+    get "/expenses" => "expenses#index"
+    post "/expenses" => "expenses#create"
+    get "/expenses/:id" => "expenses#show"
+    patch "/expenses/:id" => "expenses#update"
+    delete "/expenses/:id" => "expenses#destroy"    
   end
 end

@@ -1,17 +1,17 @@
 class V1::TripsController < ApplicationController
   # before_action :authenticate_admin
-  before_action :authenticate_user
+  # before_action :authenticate_user
   
   def index
-    trips = current_user.trips
-    # trips = Trip.all
+    # trips = current_user.trips
+    trips = Trip.all
     render json: trips.as_json
   end
 
   def create
     trip = Trip.new(
-      user_id: current_user.id,
-      # user_id: 2,
+      # user_id: current_user.id,
+      user_id: 3,
       destination: params[:destination],
       home_airport: params[:home_airport],
       destination_airport: params[:destination_airport],
@@ -34,11 +34,6 @@ class V1::TripsController < ApplicationController
     trip = Trip.find_by(id: trip_id)
     render json: trip.as_json
   end
-
-  # def show
-  #   trip = Trip.find_by(id: params[:id])
-  #   # render trip.as_json_with_recommendations
-  # end
 
   def update
     trip = Trip.find_by(id: params[:id])
@@ -63,5 +58,4 @@ class V1::TripsController < ApplicationController
     trip.destroy
     render json: {message: "Trip has been deleted."}
   end
-
 end

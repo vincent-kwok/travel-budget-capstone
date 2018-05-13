@@ -1,4 +1,4 @@
-/* global Vue, VueRouter, axios, google */
+/* global Vue, VueRouter, axios, google, usAirports */
 
 var useCachedTrips = true;
 // tried to generate random picture for cards
@@ -25,20 +25,12 @@ var HomePage = {
     };
   },
   created: function() {
-    // console.log("gonna grab some trips....")
-    // var cachedTripsString = localStorage.getItem("cachedTrips");
-    // if (useCachedTrips && cachedTripsString) {
-    //   this.trips = JSON.parse(cachedTripsString);
-    //   console.log("trips retrieved from cache");
-    // } else {
     axios.get("/v1/trips").then(
       function(response) {
         this.trips = response.data;
         localStorage.setItem("cachedTrips", JSON.stringify(response.data));
-        console.log("trips retrieved from api");
       }.bind(this)
     );
-    // }
   },
   methods: {
     setCurrentTrip: function(inputTrip) {
@@ -66,8 +58,6 @@ var TripsNewPage = {
       let lat = place.geometry.location.lat();
       let lon = place.geometry.location.lng();
       let city = ac[0]["short_name"];
-
-      console.log(`The user picked ${city} with the coordinates ${lat}, ${lon}`);
     });
   },
   data: function() {
@@ -96,15 +86,18 @@ var TripsNewPage = {
         budget_fun: "",
       },
       flights: this.flights,
+      hotels: this.hotels,
+      airports: usAirports
     };
   },
-  created: function() {
-    axios.get("http://developer.goibibo.com/api/search/?app_id=32e4551b&app_key=5a51d0b0ff157bae5674f87076e24c92&format=json&source=lga&destination=ord&dateofdeparture=20180602&dateofarrival=20180612&seatingclass=E&adults=1&children=0&infants=0&counter=100").then(
-      function(response) {
-        this.trips = response.data;
-      }.bind(this)
-    );
-  },
+  // created: function() {
+  //   // console.log(this.airports);
+  //   axios.get("http://developer.goibibo.com/api/search/?app_id=32e4551b&app_key=5a51d0b0ff157bae5674f87076e24c92&format=json&source=lga&destination=ord&dateofdeparture=20180602&dateofarrival=20180612&seatingclass=E&adults=1&children=0&infants=0&counter=100").then(
+  //     function(response) {
+  //       this.trips = response.data;
+  //     }.bind(this)
+  //   );
+  // },
   methods: {
     submit: function() {
       var params = {
@@ -140,12 +133,11 @@ var TripsNewPage = {
         start_date: this.start_date,
         end_date: this.end_date,
       };
-      console.log(params);
+
       axios
         .get("/v1/flights", {params: params})
         .then(function(response) {
           this.flights = response.data;
-          console.log('flight data', this.flights);
         }.bind(this)
         );
     },
@@ -155,12 +147,10 @@ var TripsNewPage = {
         start_date: this.start_date,
         end_date: this.end_date,
       };
-      console.log(params);
       axios
         .get("/v1/hotels", {params: params})
         .then(function(response) {
           this.hotels = response.data;
-          console.log('hotel data', this.hotels);
         }.bind(this)
         );
     },
@@ -189,6 +179,32 @@ var TripsShowPage = {
     axios.get("v1/trips/" + this.$route.params.id).then(
       function(response) {
         this.trip = response.data;
+      }.bind(this)
+    );
+  },
+  methods: {},
+  computed: {}
+};
+
+var ExpensesNewPage = {
+  template: "#expenses-new-page",
+};
+
+var ExpensesShowPage = {
+  template: "#expenses-show-page",
+  data: function() {
+    return {
+      expense: {
+        category: "category goes here",
+        description: "description goes here",
+        amount: "amount goes here",
+      }
+    };
+  },
+  created: function() {
+    axios.get("v1/expenses/" + this.$route.params.id).then(
+      function(response) {
+        this.expense = response.data;
       }.bind(this)
     );
   },
@@ -274,10 +290,11 @@ var router = new VueRouter({
     { path: "/", component: HomePage },
     { path: "/trips/new", component: TripsNewPage },
     { path: "/trips/:id", component: TripsShowPage },
+    { path: "/expenses/new", component: ExpensesNewPage },
+    { path: "/expenses/:id", component: ExpensesShowPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage }
-
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

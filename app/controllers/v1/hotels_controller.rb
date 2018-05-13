@@ -1,10 +1,5 @@
 class V1::HotelsController < ApplicationController
   def index
-    # source = "LGA"
-    # destination = "MDW"
-    # dateofdeparture = "2018-07-01"
-    # dateofarrival = "2018-07-07"
-
     source = params[:home_airport]
     destination = params[:destination_airport]
     dateofdeparture = params[:start_date].tr('-', '')
@@ -21,19 +16,9 @@ class V1::HotelsController < ApplicationController
     response = Unirest.get("http://developer.goibibo.com/api/search/?app_id=#{ENV['app_id']}&app_key=#{ENV['app_key']}&format=json&source=#{source}&destination=#{destination}&dateofdeparture=#{dateofdeparture}&dateofarrival=#{dateofarrival}&seatingclass=#{seatingclass}&adults=#{adults}&children=#{children}&infants=#{infants}&counter=#{counter}")
     flights = []
 
-    # puts "-" * 50
-    # pp response.body
-    # puts "-" * 50
-
     data = response.body["data"]["onwardflights"]
 
     5.times do |i|
-      # flight1 = {
-      #   "Airline" => response.body["data"]["onwardflights"][i]["airline"],
-      #   "Departure Time" => response.body["data"]["onwardflights"][i]["deptime"],
-      #   "Arrival Time" => response.body["data"]["onwardflights"][i]["arrtime"],
-      #   "Fare" => response.body["data"]["onwardflights"][i]["fare"]["totalfare"],
-      # }
       flights << {
         "Airline" => response.body["data"]["onwardflights"][i]["airline"],
         "Departure Time" => response.body["data"]["onwardflights"][i]["deptime"],

@@ -1,7 +1,6 @@
 class Trip < ApplicationRecord
   belongs_to :user
-
-
+  has_many :expenses
 
   # def recommendations
   #   # Make Unirest requests
