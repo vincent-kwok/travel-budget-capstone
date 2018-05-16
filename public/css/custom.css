@@ -5,6 +5,36 @@ body {
   background-attachment: fixed;
 }
 
-input {
-  width: 100px;
+.clear {
+  width: 100%;
+  background: none;
+  padding: 0px;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #000000;
+  border-radius: 5px;
+}
+
+.threes {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 4;
+}
+
+.delete {
+  background-color: maroon;
+  border-color: maroon;
+}
+
+.delete:hover {
+  background-color: red;
+  border-color: red; 
+}
+
+.spinner {
+  display: none;
+}
+
+[v-cloak].spinner {
+  display: block;
 }

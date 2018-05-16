@@ -7,7 +7,7 @@ class V1::ExpensesController < ApplicationController
 
   def create
     expense = Expense.new(
-      trip_id: 2,
+      trip_id: params[:trip_id],
       category: params[:category],
       amount: params[:amount],
       description: params[:description],
@@ -28,8 +28,8 @@ class V1::ExpensesController < ApplicationController
   def update
     expense = Expense.find_by(id: params[:id])
     expense.category = params[:category] || expense.category
-    expense.amount = params[:amount] || expense.amount
     expense.description = params[:description] || expense.description
+    expense.amount = params[:amount] || expense.amount
     if expense.save
       render json: expense.as_json
     else

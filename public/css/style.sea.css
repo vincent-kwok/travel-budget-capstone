@@ -324,6 +324,8 @@ SIDEBAR + RIGHT COLUMN
 */
 #sidebar {
   padding-top: 40px;
+  background-color: black;
+  opacity: .8;
 }
 @media screen and (min-width: 992px) {
   .sidebar-content {
@@ -337,7 +339,7 @@ SIDEBAR + RIGHT COLUMN
   letter-spacing: 0.1em;
 }
 .sidebar-heading a {
-  color: #000;
+  color: #fff;
   text-decoration: none;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -345,11 +347,11 @@ SIDEBAR + RIGHT COLUMN
 }
 .sidebar-heading a:hover {
   border-bottom: dotted 1px #379392;
-  color: #000;
+  color: #379392;
   text-decoration: none;
 }
 .sidebar-p {
-  color: #999999;
+  color: #999;
   font-size: 14px;
 }
 .sidebar-menu {
@@ -461,9 +463,9 @@ OFF-CANVAS SIDEBAR BEHAVIOUR
 @media screen and (max-width: 767px) {
   .row-offcanvas {
     position: relative;
-    -webkit-transition: all 0.25s ease-out;
-    -o-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
     opacity: 1;
   }
   .row-offcanvas-right {

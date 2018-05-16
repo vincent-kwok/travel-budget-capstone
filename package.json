@@ -21,7 +21,8 @@
   "homepage": "https://github.com/vincent-kwok/travel-budget-capstone#readme",
   "dependencies": {
     "tinycolor2": "^1.4.1",
-    "vue-google-autocomplete": "^1.1.0"
+    "vue-google-autocomplete": "^1.1.0",
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "webpack": "^4.6.0",

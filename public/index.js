@@ -28,6 +28,7 @@ var HomePage = {
     axios.get("/v1/trips").then(
       function(response) {
         this.trips = response.data;
+        console.log('trips', this.trips);
         localStorage.setItem("cachedTrips", JSON.stringify(response.data));
       }.bind(this)
     );
@@ -87,7 +88,7 @@ var TripsNewPage = {
       },
       flights: this.flights,
       hotels: this.hotels,
-      airports: usAirports
+      airports: usAirports,
     };
   },
   // created: function() {
@@ -133,7 +134,6 @@ var TripsNewPage = {
         start_date: this.start_date,
         end_date: this.end_date,
       };
-
       axios
         .get("/v1/flights", {params: params})
         .then(function(response) {
@@ -171,7 +171,16 @@ var TripsShowPage = {
         budget_flight: "budget_flight",
         budget_accom: "budget_accom",
         budget_food: "budget_food",
-        budget_fun: "budget_fun"
+        budget_fun: "budget_fun",
+      },
+      inputTrip: {
+        editTripDescription: "",
+        editTripStartSate: "",
+        editTripEndDate: "",
+        editTripBudgetFlight: "",
+        editTripBudgetAccom: "",
+        editTripBudgetFood: "",
+        editTripBudgetFun: "",
       }
     };
   },
@@ -182,12 +191,50 @@ var TripsShowPage = {
       }.bind(this)
     );
   },
-  methods: {},
+  methods: {
+    updateTrip: function(inputTrip) {
+      var params = {};
+      params.destination = this.editTripDescription;
+      params.start_date = this.editTripStartSate;
+      params.end_date = this.editTripEndDate;
+      params.budget_flight = this.editTripBudgetFlight;
+      params.budget_accom = this.editTripBudgetAccom;
+      params.budget_food = this.editTripBudgetFood;
+      params.budget_fun = this.editTripBudgetFun;
+
+      axios.patch("v1/trips/" + inputTrip.id, params).then(
+        function(response) {
+          inputTrip.destination = response.data.destination;
+          inputTrip.start_date = response.data.start_date;
+          inputTrip.end_date = response.data.end_date;
+          inputTrip.budget_flight = response.data.budget_flight;
+          inputTrip.budget_accom = response.data.budget_accom;
+          inputTrip.budget_food = response.data.budget_food;
+          inputTrip.budget_fun = response.data.budget_fun;
+          // this.editTripDescription = "";
+          // this.editTripStartDate = "";
+          // this.editTripEndDate = "";
+          // this.editTripBudgetFlight = "";
+          // this.editTripBudgetAccom = "";
+          // this.editTripBudgetFood = "";
+          // this.editTripBudgetFun = "";
+        }.bind(this)
+      );
+    },
+    deleteTrip: function(inputTrip) {
+      axios.delete("v1/trips/" + inputTrip.id)
+        .then(function(response) {
+          console.log(response.data);
+          router.push("/");
+          var index = this.trip.indexOf(inputTrip);
+          this.trip.splice(index, 1);
+        });
+    }
+  },
   computed: {}
 };
 
 var ExpensesNewPage = {
-  template: "#expenses-new-page",
 };
 
 var ExpensesShowPage = {
@@ -196,10 +243,14 @@ var ExpensesShowPage = {
     return {
       message: "Welcome to Vue.js!",
       expenses: [],
+      category: "",
+      description: "",
+      amount: "",
       currentExpense: {
-        category: "",
-        description: "",
-        amount: "",
+        trip_id: this.trip_id,
+        category: this.category,
+        description: this.description,
+        amount: this.amount
       },
     };
   },
@@ -207,7 +258,6 @@ var ExpensesShowPage = {
     axios.get("v1/expenses?trip_id=" + this.$route.query.trip_id).then(
       function(response) {
         this.expenses = response.data;
-        // filter expenses by trip here?
         console.log(this.expenses);
       }.bind(this)
     );
@@ -216,6 +266,31 @@ var ExpensesShowPage = {
     setCurrentExpense: function(inputExpense) {
       this.currentExpense = inputExpense;
     },
+    submitExpense: function() {
+      var params = {
+        trip_id: this.trip_id,
+        category: this.category,
+        description: this.description,
+        amount: this.amount
+      };
+      axios
+        .post("v1/expenses?trip_id=" + this.$route.query.trip_id, params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    },
+    deleteExpense: function(inputExpense) {
+      axios.delete("v1/expenses/" + inputExpense.id).then(function(response) {
+        console.log(response.data);
+        var index = this.expenses.indexOf(inputExpense);
+        this.expenses.splice(index, 1);
+      });
+    }
   },
   computed: {}
 };

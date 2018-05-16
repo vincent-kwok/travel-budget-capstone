@@ -1,17 +1,17 @@
 class V1::TripsController < ApplicationController
   # before_action :authenticate_admin
-  before_action :authenticate_user
+  # before_action :authenticate_user
   
   def index
-    trips = current_user.trips
-    # trips = Trip.all
+    # trips = current_user.trips
+    trips = Trip.all
     render json: trips.as_json
   end
 
   def create
     trip = Trip.new(
-      user_id: current_user.id,
-      # user_id: 3,
+      # user_id: current_user.id,
+      user_id: 3,
       destination: params[:destination],
       home_airport: params[:home_airport],
       destination_airport: params[:destination_airport],

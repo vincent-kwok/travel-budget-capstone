@@ -45,7 +45,7 @@
               <ul class="sidebar-menu">
                 <li><a href="/#/signup">Sign Up</a></li>
                 <li><a href="/#/login">Log In</a></li>
-                <li class="active"><a href="/#/trips/new">New Trip</a></li>
+                <li class="active"><a href="/#/">Trips</a></li>
                 <!-- <li><a href=" '/#/trips/'+trip.id ">Show Trip</a></li> -->
                 <li><a href="/#/logout">Log Out</a></li>
               </ul>
@@ -97,46 +97,69 @@
   <div class="vue-component">
     <div class="row" name="fade">
       <!-- new trip template -->
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item"> 
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 masonry-item"> 
         <div class="box-masonry"><a href="/#/trips/new" title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="" alt="" class="img-responsive"></a>
           <div class="box-masonry-text">
             <div class="box-masonry-description">
               <h4>New Destination</h4>
-              <!-- <h4>{{ trip.home_airport }}</h4>
-              <h4>{{ trip.destination_airport }}</h4> -->
-              <h5> start: ?</h5>
-              <h5> end: ?</h5>
-              <h5>Budget</h5>
-              <h6> flight: ?</h6>
-              <h6> stay: ?</h6>
-              <h6> food: ?</h6>
-              <h6> fun: ?</h6>
+
             </div>
           </div>
         </div>
       </div>
 
       <!-- v-for -->
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item" v-for="trip in trips"> 
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 masonry-item" v-for="trip in trips"> 
         <div class="box-masonry"><a v-bind:href="'/#/trips/' + trip.id " title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="img/tripBackgrounds/seattle.jpeg" alt="" class="img-responsive"></a>
           <div class="box-masonry-text">
             <div class="box-masonry-description">
+              
               <h4>{{ trip.destination }}</h4>
-              <!-- <h4>{{ trip.home_airport }}</h4>
+<!--               <h4>{{ trip.home_airport }}</h4>
               <h4>{{ trip.destination_airport }}</h4> -->
-              <h5> start: {{ trip.start_date }}</h5>
-              <h5> end: {{ trip.end_date }}</h5>
-              <h5>Budget</h5>
-              <h6> flight: {{ trip.budget_flight }}</h6>
-              <h6> stay: {{ trip.budget_accom }}</h6>
-              <h6> food: {{ trip.budget_food }}</h6>
-              <h6> fun: {{ trip.budget_fun }}</h6>
-              <a v-bind:href=" '/#/expenses?trip_id=' + trip.id " class="btn btn-primary">View Trip Expenses</a>
+              <h5> Start: {{ trip.start_date }}</h5>
+              <h5> End: {{ trip.end_date }}</h5>
+
+              <h4>Total Budget: ${{ trip.actual_expenses }} / ${{ trip.budget_total }}</h4>
+              <div class="progress">
+                <div id="actual_expenses_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                  {{ trip.actual_ratio }}%
+                </div>
+              </div>
+              
+              <h6> Travel: ${{ trip.actual_travel }} / ${{ trip.budget_flight }}</h6>
+              <div class="progress">
+                <div id="actual_travel_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                  {{ trip.travel_ratio }}%
+                </div>
+              </div>
+              
+              <h6> Stay: ${{ trip.actual_accom }} / ${{ trip.budget_accom }}</h6>
+              <div class="progress">
+                <div id="actual_accom_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                  {{ trip.accom_ratio }}%
+                </div>
+              </div>
+              
+              <h6> Food: ${{ trip.actual_food }} / ${{ trip.budget_food }}</h6>
+              <div class="progress">
+                <div id="actual_food_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                  {{ trip.food_ratio }}%
+                </div>
+              </div>
+              
+              <h6> Fun: ${{ trip.actual_entertainment }} / ${{ trip.budget_fun }}</h6>
+              <div class="progress">
+                <div id="actual_entertainment_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                  {{ trip.entertainment_ratio }}%
+                </div>
+              </div>
+              
+              <a v-bind:href=" '/#/expenses?trip_id=' + trip.id " class="btn btn-primary">View Expenses</a>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -269,32 +292,60 @@
     <h4>{{ trip.destination_airport }}</h4> -->
     <h5> start: {{ trip.start_date }}</h5>
     <h5> end: {{ trip.end_date }}</h5>
-    <h5>Budget</h5>
+    <h5>budget</h5>
     <h6> flight: {{ trip.budget_flight }}</h6>
     <h6> accom: {{ trip.budget_accom }}</h6>
     <h6> food: {{ trip.budget_food }}</h6>
     <h6> fun: {{ trip.budget_fun }}</h6>
+<!--     <h5>Update Trip</h5>
+    <div>
+      destination: <input type="string" v-model="editTripDescription">
+      start_date: <input type="date" v-model="editTripStartDate">
+      end_date: <input type="date" v-model="editTripEndDate">
+      budget_flight: <input type="integer" v-model="editTripBudgetFlight">
+      budget_accom: <input type="integer" v-model="editTripBudgetAccom">
+      budget_food: <input type="integer" v-model="editTripBudgetFood">
+      budget_fun: <input type="integer" v-model="editTripBudgetFun">
+      <button class="btn btn-primary" v-on:click="updateTrip(trip)">Update Trip</button>
+    </div> -->
+    <button class="btn btn-primary delete" v-on:click="deleteTrip(trip)">Delete Trip</button>
     <a class="btn btn-primary" href="/#/">Back to all trips</a>
   </div>
 </template>
 
-<template id="expenses-new-page">
+<!-- <template id="expenses-new-page">
   <div class="vue-component">
 
-    <!-- <h6> fun: {{ expense }}</h6> -->
+      <div class="form-group">
+        <input type="text" class="form-control" v-model="expense_category" value="travel"><input type="text" class="form-control" v-model="expense_description" value="Uber"><input type="text" class="form-control" v-model="expense_amount" value="$10">
+        <a class="btn btn-primary" v-on:click="submit()">Submit</a>
+      </div>
 
     <a class="btn btn-primary" href="/#/">Back to all trips</a>
+  
   </div>
-</template>
+</template> -->
 
 <template id="expenses-show-page">
   <div class="vue-component">
-    <a class="btn btn-primary" href="/#/expenses/new" title="" class="box-masonry-image with-hover-overlay with-hover-icon">Add Expense</a>
-    <h4>category | description | amount</h4>
-    <div v-for="expense in expenses">
-      <h5>{{ expense.category }} | {{ expense.description }} | {{ expense.amount }}</h5>
+    <div class="threes">
+      <h4 style="margin-top: 0px;">category</h4>
+      <h4>description</h4>
+      <h4>amount</h4>
     </div>
-    <a class="btn btn-primary" href="/#/">Back to trip</a>
+    <div class="threes">
+      <input type="text" class="form-control clear" v-model="category" placeholder="travel">
+      <input type="text" class="form-control clear" v-model="description" placeholder="Uber">
+      <input type="number" class="form-control clear" v-model="amount" placeholder="$ 10">
+      <a class="btn btn-primary" v-on:click="submitExpense()">Submit</a>
+    </div>
+    <div class="threes" v-for="expense in expenses">
+      <h5 style="margin-top: 0px;">{{ expense.category }}</h5>
+      <h5>{{ expense.description }}</h5>
+      <h5>$ {{ expense.amount }}</h5>
+      <a class="btn btn-primary delete" v-on:click="deleteExpense(expense)">Delete</a>
+    </div>
+    <a class="btn btn-primary" href="/#/">Back to trips</a>
   </div>
 </template>
 
