@@ -18,7 +18,7 @@ class V1::FlightsController < ApplicationController
 
     data = response.body["data"]["onwardflights"]
 
-    5.times do |i|
+    3.times do |i|
       flights << {
         "Airline" => response.body["data"]["onwardflights"][i]["airline"],
         "Departure Time" => response.body["data"]["onwardflights"][i]["deptime"],

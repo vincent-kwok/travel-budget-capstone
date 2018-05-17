@@ -16,9 +16,13 @@ body {
 }
 
 .threes {
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
+    -webkit-column-count: 4; /* Chrome, Safari, Opera */
+    -moz-column-count: 4; /* Firefox */
     column-count: 4;
+}
+
+.twos {
+  column-count: 2;
 }
 
 .delete {

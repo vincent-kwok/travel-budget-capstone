@@ -86,7 +86,7 @@ var TripsNewPage = {
         budget_food: "",
         budget_fun: "",
       },
-      flights: this.flights,
+      flights: [],
       hotels: this.hotels,
       airports: usAirports,
     };
