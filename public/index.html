@@ -122,35 +122,35 @@
 
               <h4>Total Budget: ${{ trip.actual_expenses }} / ${{ trip.budget_total }}</h4>
               <div class="progress">
-                <div id="actual_expenses_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                <div id="actual_expenses_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.actual_ratio + '%' ">
                   {{ trip.actual_ratio }}%
                 </div>
               </div>
               
               <h6> Travel: ${{ trip.actual_travel }} / ${{ trip.budget_flight }}</h6>
               <div class="progress">
-                <div id="actual_travel_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                <div id="actual_travel_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.travel_ratio + '%' ">
                   {{ trip.travel_ratio }}%
                 </div>
               </div>
               
               <h6> Stay: ${{ trip.actual_accom }} / ${{ trip.budget_accom }}</h6>
               <div class="progress">
-                <div id="actual_accom_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                <div id="actual_accom_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.accom_ratio + '%' ">
                   {{ trip.accom_ratio }}%
                 </div>
               </div>
               
               <h6> Food: ${{ trip.actual_food }} / ${{ trip.budget_food }}</h6>
               <div class="progress">
-                <div id="actual_food_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                <div id="actual_food_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.food_ratio + '%' ">
                   {{ trip.food_ratio }}%
                 </div>
               </div>
               
               <h6> Fun: ${{ trip.actual_entertainment }} / ${{ trip.budget_fun }}</h6>
               <div class="progress">
-                <div id="actual_entertainment_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                <div id="actual_entertainment_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.entertainment_ratio + '%' ">
                   {{ trip.entertainment_ratio }}%
                 </div>
               </div>

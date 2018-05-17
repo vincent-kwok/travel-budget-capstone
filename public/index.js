@@ -234,9 +234,6 @@ var TripsShowPage = {
   computed: {}
 };
 
-var ExpensesNewPage = {
-};
-
 var ExpensesShowPage = {
   template: "#expenses-show-page",
   data: function() {
@@ -276,8 +273,11 @@ var ExpensesShowPage = {
       axios
         .post("v1/expenses?trip_id=" + this.$route.query.trip_id, params)
         .then(function(response) {
-          router.push("/");
-        })
+          this.expenses.push(response.data);
+          this.category = '';
+          this.description = '';
+          this.amount = '';
+        }.bind(this))
         .catch(
           function(error) {
             this.errors = error.response.data.errors;
@@ -289,7 +289,7 @@ var ExpensesShowPage = {
         console.log(response.data);
         var index = this.expenses.indexOf(inputExpense);
         this.expenses.splice(index, 1);
-      });
+      }.bind(this));
     }
   },
   computed: {}
@@ -373,7 +373,6 @@ var router = new VueRouter({
     { path: "/", component: HomePage },
     { path: "/trips/new", component: TripsNewPage },
     { path: "/trips/:id", component: TripsShowPage },
-    { path: "/expenses/new", component: ExpensesNewPage },
     { path: "/expenses", component: ExpensesShowPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },

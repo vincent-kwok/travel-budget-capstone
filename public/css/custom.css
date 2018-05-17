@@ -27,8 +27,8 @@ body {
 }
 
 .delete:hover {
-  background-color: red;
-  border-color: red; 
+  background-color: #934e37;
+  border-color: #934e37; 
 }
 
 .spinner {
@@ -37,4 +37,15 @@ body {
 
 [v-cloak].spinner {
   display: block;
+}
+
+.progress-bar {
+  color: #000;
+  background-color: #937c37;
+  text-align: left;
+  text-indent: 10px;
+}
+
+.progress {
+    background-color: #ccc;
 }
