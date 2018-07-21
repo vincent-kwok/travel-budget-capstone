@@ -1,24 +1,22 @@
 /* your styles go here */
 
 body {
-  background-image: url("../concrete_wall_2.png");
+  background-image: url("../sandpaper.png");
   background-attachment: fixed;
 }
 
 .clear {
-  width: 100%;
-  background: none;
-  padding: 0px;
+  background: #eee;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 700;
   color: #000000;
   border-radius: 5px;
 }
 
 .threes {
-    -webkit-column-count: 4; /* Chrome, Safari, Opera */
-    -moz-column-count: 4; /* Firefox */
-    column-count: 4;
+  -webkit-column-count: 4; /* Chrome, Safari, Opera */
+  -moz-column-count: 4; /* Firefox */
+  column-count: 4;
+  line-height: 38px;
 }
 
 .twos {

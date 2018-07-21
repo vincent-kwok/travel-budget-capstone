@@ -14,9 +14,9 @@ class V1::FlightsController < ApplicationController
     counter = "100"
 
     response = Unirest.get("http://developer.goibibo.com/api/search/?app_id=#{ENV['app_id']}&app_key=#{ENV['app_key']}&format=json&source=#{source}&destination=#{destination}&dateofdeparture=#{dateofdeparture}&dateofarrival=#{dateofarrival}&seatingclass=#{seatingclass}&adults=#{adults}&children=#{children}&infants=#{infants}&counter=#{counter}")
-    flights = []
-
     data = response.body["data"]["onwardflights"]
+
+    flights = []
 
     3.times do |i|
       flights << {

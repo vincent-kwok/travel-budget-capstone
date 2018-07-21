@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BYT</title>
+    <title>BYTE</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -34,10 +34,10 @@
     <div id="all">
       <div class="container-fluid">
         <div class="row row-offcanvas row-offcanvas-left">
-          <!-- sidebar -->
+<!-- sidebar start -->
           <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
             <div class="sidebar-content">
-              <h1 class="sidebar-heading"> <a href="/#/">BYT - BUDGET YOUR TRIP</a></h1>
+              <h1 class="sidebar-heading"> <a href="/#/">BYTE - BUDGET YOUR TRAVEL EXPENSES</a></h1>
               <p class="sidebar-p">Traveling is fun. You get to see new landmarks, eat at new restaurants, attend new events, and leave your responsibilities behind.</p>
               <p class="sidebar-p">But sometimes coming back from a trip can leave you regreting some purchases.</p>
               <p class="sidebar-p">That's where budgeting comes in handy.</p>
@@ -46,31 +46,28 @@
                 <li><a href="/#/signup">Sign Up</a></li>
                 <li><a href="/#/login">Log In</a></li>
                 <li class="active"><a href="/#/">Trips</a></li>
-                <!-- <li><a href=" '/#/trips/'+trip.id ">Show Trip</a></li> -->
                 <li><a href="/#/logout">Log Out</a></li>
               </ul>
               <p class="social">
-                <a href="https://www.linkedin.com/in/kwokvincent/" data-animate-hover="pulse" class="external gplus"><i class="fa fa-linkedin"></i></a>
-                <a href="https://github.com/vincent-kwok" data-animate-hover="pulse" class="external gplus"><i class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/kwokvincent/" data-animate-hover="pulse" class="external linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/vincent-kwok" data-animate-hover="pulse" class="external github"><i class="fa fa-github"></i></a>
+                <a href="https://codepen.io/vkwok22/" data-animate-hover="pulse" class="external codepen"><i class="fa fa-codepen"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=12128516" data-animate-hover="pulse" class="external facebook"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com/vincenzo.__/" data-animate-hover="pulse" class="external instagram"><i class="fa fa-instagram"></i></a>
                 <a href="mailto:vkwok22@gmail.com?subject=Let's set up an interview" data-animate-hover="pulse" class="email" target="_blank"><i class="fa fa-envelope"></i></a>
               </p>
               <div class="copyright">
-                <p class="credit">&copy;2018 Vincent Kwok
-                  <!-- Template by <a href="https://bootstrapious.com/e-commerce-templates" class="external">Bootstrapious</a> -->    
-                </p>
-                <!-- Please do not remove the backlink to us, unless you support the development at https://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :) -->
+                <p class="credit">&copy;2018 Vincent Kwok</p>
+                <p>Template by <a href="https://bootstrapious.com/e-commerce-templates" class="external">Bootstrapious</a></p>
               </div>
             </div>
           </div>
-          <!-- sidebar end -->
+<!-- sidebar end -->
           <div class="col-xs-12 col-sm-8 col-md-9 content-column">
             <div class="small-navbar visible-xs">
               <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
               <h1 class="small-navbar-heading"> <a href="index.html">BUDGET TRIP</a></h1>
             </div>
-            <!-- vue.js -->
+<!-- vue.js -->
             <div id="vue-app">
               <router-view></router-view>
             </div>
@@ -80,7 +77,7 @@
       </div>
     </div>
 
-    <!-- Javascript files-->
+<!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"> </script>
     <script src="js/jquery.cookie.js"> </script>
@@ -91,36 +88,72 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkeeK9HNiCIdBr-r-w7KTQmibiMjxl2nA&libraries=places"></script>
-    <!-- AIzaSyDkeeK9HNiCIdBr-r-w7KTQmibiMjxl2nA -->
   </body>
 </html>
 
 <template id="home-page">
   <div class="vue-component">
     <div class="row" name="fade">
-      <!-- new trip template -->
+<!-- new trip template -->
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 masonry-item"> 
         <div class="box-masonry"><a href="/#/trips/new" title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img src="img/tripBackgrounds/airplane.jpg" alt="" class="img-responsive"></a>
           <div class="box-masonry-text">
             <div class="box-masonry-description">
               <h4>New Destination</h4>
+              <h6>Start: MM/DD/YYYY</h6>
+              <h6>End: MM/DD/YYYY</h6>
+
+              <h5>Total Budget: </h5>
+              <div class="progress">
+                <div id="" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                  0%
+                </div>
+              </div>
+
+              <h6>Travel: </h6>
+              <div class="progress">
+                <div id="" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                  0%
+                </div>
+              </div>
+
+              <h6>Accommodations: </h6>
+              <div class="progress">
+                <div id="" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                  0%
+                </div>
+              </div>
+
+              <h6>Food & Drink: </h6>
+              <div class="progress">
+                <div id="" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                  0%
+                </div>
+              </div>
+
+              <h6>Entertainment: </h6>
+              <div class="progress">
+                <div id="" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                  0%
+                </div>
+              </div>
+
+              <a class="btn btn-primary" style="font-size: 14px"><i class="fa fa-search"></i> Expenses</a>
 
             </div>
           </div>
         </div>
       </div>
 
-      <!-- v-for -->
+<!-- v-for trips -->
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 masonry-item" v-for="trip in trips"> 
         <div class="box-masonry"><a v-bind:href="'/#/trips/' + trip.id " title="" class="box-masonry-image with-hover-overlay with-hover-icon"><img v-bind:src="'img/tripBackgrounds/' + trip.destination + '.jpg'" alt="" class="img-responsive"></a>
           <div class="box-masonry-text">
             <div class="box-masonry-description">
               
               <h4>{{ trip.destination }}</h4>
-<!--               <h4>{{ trip.home_airport }}</h4>
-              <h4>{{ trip.destination_airport }}</h4> -->
-                <h6> Start: {{ trip.start_date }}</h6>
-                <h6>End: {{ trip.end_date }}</h6>
+              <h6>Start: {{ trip.start_date }}</h6>
+              <h6>End: {{ trip.end_date }}</h6>
 
               <h5>Total Budget: ${{ trip.actual_expenses }} / ${{ trip.budget_total }}</h5>
               <div class="progress">
@@ -129,35 +162,36 @@
                 </div>
               </div>
               
-              <h6> Travel: ${{ trip.actual_travel }} / ${{ trip.budget_flight }}</h6>
+              <h6>Travel: ${{ trip.actual_travel }} / ${{ trip.budget_flight }}</h6>
               <div class="progress">
                 <div id="actual_travel_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.travel_ratio + '%' ">
                   {{ trip.travel_ratio }}%
                 </div>
               </div>
               
-              <h6> Stay: ${{ trip.actual_accom }} / ${{ trip.budget_accom }}</h6>
+              <h6>Accommodations: ${{ trip.actual_accom }} / ${{ trip.budget_accom }}</h6>
               <div class="progress">
                 <div id="actual_accom_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.accom_ratio + '%' ">
                   {{ trip.accom_ratio }}%
                 </div>
               </div>
               
-              <h6> Food: ${{ trip.actual_food }} / ${{ trip.budget_food }}</h6>
+              <h6>Food & Drink: ${{ trip.actual_food }} / ${{ trip.budget_food }}</h6>
               <div class="progress">
                 <div id="actual_food_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.food_ratio + '%' ">
                   {{ trip.food_ratio }}%
                 </div>
               </div>
               
-              <h6> Fun: ${{ trip.actual_entertainment }} / ${{ trip.budget_fun }}</h6>
+              <h6>Entertainment: ${{ trip.actual_entertainment }} / ${{ trip.budget_fun }}</h6>
               <div class="progress">
                 <div id="actual_entertainment_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.entertainment_ratio + '%' ">
                   {{ trip.entertainment_ratio }}%
                 </div>
               </div>
               
-              <a v-bind:href=" '/#/expenses?trip_id=' + trip.id " class="btn btn-primary">View Expenses</a>
+              <a v-bind:href=" '/#/expenses?trip_id=' + trip.id " class="btn btn-primary" style="font-size: 14px"><i class="fa fa-search"></i> Expenses</a>
+            
             </div>
           </div>
         </div>
@@ -167,9 +201,9 @@
 </template>
 
 <template id="trips-new-page">
-  <div class="vue-component">
-
+  <div class="vue-component" style="margin-bottom: 50px">
     <div class="container">
+
       <h4>New Trip</h4>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
@@ -205,13 +239,14 @@
         <input id="meeting" type="date" class="form-control" v-model="end_date" value=""/>
       </div>
 
-      <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#flightModal" v-on:click="checkFlights()">View Flights</a>
-      <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#hotelModal" v-on:click="checkHotels()">View Hotels</a>
+<!-- buttons for view flights and hotels -->
+      <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#flightModal" v-on:click="checkFlights()"><i class="fa fa-search"></i> Flights</a>
+      <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#hotelModal" v-on:click="checkHotels()"><i class="fa fa-search"></i> Hotels</a>
 
       <h4>Budget:</h4>
 
       <div class="form-group">
-        <label>Flight:</label>
+        <label>Travel:</label>
         <input type="text" class="form-control" v-model="budget_flight">
       </div>
 
@@ -233,88 +268,122 @@
       <a class="btn btn-primary" v-on:click="submit()">Submit</a>
     </div>
 
-    <!-- Flights Modal -->
+<!-- flights modal -->
     <div class="modal fade" id="flightModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Flights</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
+
           <div class="modal-body">
-            <div v-if="flights.length === 0">
+            <div v-if="flights.length === 0" style="text-align: center;">
               <img src="loading.gif" alt="">
             </div>
             <div v-for="flight in flights">
-              <h5>Airline: {{ flight["Airline"] }}</h5>
+              <h4 style="font-style: italic">Airline: {{ flight["Airline"] }}</h4>
               <h5>Departure Time: {{ flight["Departure Time"] }}</h5>
               <h5>Arrival Time: {{ flight["Arrival Time"] }}</h5>
-              <h5>Fare: ${{ flight["Fare"] / 100 }}</h5>
+              <h4 style="font-style: italic">Fare: ${{ flight["Fare"] / 100 }}</h4>
               <br>
             </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button onclick="location.href='https://www.skyscanner.com/'" type="button" class="btn btn-primary">SkyScanner</button>
           </div>
+
         </div>
       </div>
     </div>
 
-    <!-- Hotels Modal -->
+<!-- hotels modal -->
     <div class="modal fade" id="hotelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Hotels</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
+
           <div class="modal-body">
             <div v-for="hotel in hotels">
               <h5></h5>
               <br>
             </div>
           </div>
+
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-size: 14px">Close</button>
             <button onclick="location.href='https://www.airbnb.com/'" type="button" class="btn btn-primary">Airbnb</button>
           </div>
         </div>
+
       </div>
     </div>
-
   </div>
 </template>
 
 <template id="trips-show-page">
-  <div class="vue-component">
-    <h4>{{ trip.destination }}</h4>
-<!--     <h4>{{ trip.home_airport }}</h4>
-    <h4>{{ trip.destination_airport }}</h4> -->
-    <h5> start: {{ trip.start_date }}</h5>
-    <h5> end: {{ trip.end_date }}</h5>
-    <h5>budget</h5>
-    <h6> flight: {{ trip.budget_flight }}</h6>
-    <h6> accom: {{ trip.budget_accom }}</h6>
-    <h6> food: {{ trip.budget_food }}</h6>
-    <h6> fun: {{ trip.budget_fun }}</h6>
-<!--     <h5>Update Trip</h5>
-    <div>
-      destination: <input type="string" v-model="editTripDescription">
-      start_date: <input type="date" v-model="editTripStartDate">
-      end_date: <input type="date" v-model="editTripEndDate">
-      budget_flight: <input type="integer" v-model="editTripBudgetFlight">
-      budget_accom: <input type="integer" v-model="editTripBudgetAccom">
-      budget_food: <input type="integer" v-model="editTripBudgetFood">
-      budget_fun: <input type="integer" v-model="editTripBudgetFun">
-      <button class="btn btn-primary" v-on:click="updateTrip(trip)">Update Trip</button>
-    </div> -->
-    <button class="btn btn-primary delete" v-on:click="deleteTrip(trip)">Delete Trip</button>
-    <a class="btn btn-primary" href="/#/">Back to all trips</a>
+  <div class="vue-component" style="margin-bottom: 50px">
+
+    <h3>{{ trip.destination.toUpperCase() }}</h3>
+    <h5> Start: {{ trip.start_date }}</h5>
+    <h5>End: {{ trip.end_date }}</h5>
+
+    <h4>Total Budget: ${{ trip.actual_expenses }} / ${{ trip.budget_total }}</h4>
+    <div class="progress" style="width: 80%">
+      <div id="actual_expenses_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.actual_ratio + '%' ">
+        {{ trip.actual_ratio }}%
+      </div>
+    </div>
+    
+    <h5> Travel: ${{ trip.actual_travel }} / ${{ trip.budget_flight }} <i class="fa fa-pencil"></i></h5>
+    <div class="progress" style="width: 80%">
+      <div id="actual_travel_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.travel_ratio + '%' ">
+        {{ trip.travel_ratio }}%
+      </div>
+    </div>
+    
+    <h5> Accommodations: ${{ trip.actual_accom }} / ${{ trip.budget_accom }} <i class="fa fa-pencil"></i></h5>
+    <div class="progress" style="width: 80%">
+      <div id="actual_accom_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.accom_ratio + '%' ">
+        {{ trip.accom_ratio }}%
+      </div>
+    </div>
+    
+    <h5> Food & Drink: ${{ trip.actual_food }} / ${{ trip.budget_food }} <i class="fa fa-pencil"></i></h5>
+    <div class="progress" style="width: 80%">
+      <div id="actual_food_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.food_ratio + '%' ">
+        {{ trip.food_ratio }}%
+      </div>
+    </div>
+    
+    <h5> Entertainment: ${{ trip.actual_entertainment }} / ${{ trip.budget_fun }} <i class="fa fa-pencil"></i></h5>
+    <div class="progress" style="width: 80%">
+      <div id="actual_entertainment_progress" class="progress-bar bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" v-bind:style=" 'width:' + trip.entertainment_ratio + '%' ">
+        {{ trip.entertainment_ratio }}%
+      </div>
+    </div>
+
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Request time-off</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Find dog sitter</label>
+    </div>
+    <div class="checkbox disabled">
+      <label><input type="checkbox" value="" disabled>Book airbnbs</label>
+    </div>
+
+    <img src="us.png" alt="">
+
+
+
+    <button class="btn btn-primary delete" v-on:click="deleteTrip(trip)" style="font-size: 14px; margin-top: 20px"><i class="fa fa-trash"></i> Delete Trip</button>
+    <a class="btn btn-primary" href="/#/" style="font-size: 14px; margin-top: 20px"><i class="fa fa-arrow-left"></i>Back to All Trips</a>
   </div>
 </template>
 
@@ -334,9 +403,9 @@
 <template id="expenses-show-page">
   <div class="vue-component">
     <div class="threes">
-      <h4 style="margin-top: 0px;">category <a href="" class="fa fa-caret-down"></a></h4>
-      <h4>description <a href="" class="fa fa-caret-down"></a></h4>
-      <h4>amount <a href="" class="fa fa-caret-down"></a></h4>
+      <h5 style="margin-top: 0px;">CATEGORY <a class="fa fa-angle-down" v-on:click="setSortAttribute('category')"></a></h5>
+      <h5>DESCRIPTION <a class="fa fa-angle-down" v-on:click="setSortAttribute('description')"></a></h5>
+      <h5>AMOUNT <a class="fa fa-angle-down" v-on:click="setSortAttribute('amount')"></a></h5>
     </div>
     <div class="threes">
       <select class="form-control clear" v-model="category">
@@ -345,18 +414,18 @@
         <option value="travel">travel</option>
         <option value="accommodation">accommodation</option>
       </select>
-      <!-- <input type="text" class="form-control clear" v-model="category" placeholder="travel"> -->
       <input type="text" class="form-control clear" v-model="description">
       <input type="number" class="form-control clear" v-model="amount">
-      <a class="btn btn-primary" v-on:click="submitExpense()">Submit</a>
+      <a class="btn btn-primary" v-on:click="submitExpense()" style="font-size: 14px"><i class="fa fa-plus"></i></a>
     </div>
-    <div class="threes" v-for="expense in expenses" style="margin-top: 8px">
+    <hr>
+    <div class="threes" v-for="expense in sortedExpenses" style="margin-top: 8px">
       <h5 style="margin-top: 0px;">{{ expense.category }}</h5>
       <h5>{{ expense.description }}</h5>
       <h5>$ {{ expense.amount }}</h5>
-      <a class="btn btn-primary delete" v-on:click="deleteExpense(expense)">Delete </a>
+      <a class="btn btn-primary delete" v-on:click="deleteExpense(expense)" style="font-size: 14px"><i class="fa fa-trash"></i></a>
     </div>
-    <a class="btn btn-primary" href="/#/">Back to trips</a>
+    <a class="btn btn-primary" href="/#/" style="font-size: 14px"><i class="fa fa-arrow-left"></i>Back to Trips</a>
   </div>
 </template>
 

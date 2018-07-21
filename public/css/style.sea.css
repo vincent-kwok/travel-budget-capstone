@@ -325,7 +325,8 @@ SIDEBAR + RIGHT COLUMN
 #sidebar {
   padding-top: 40px;
   background-color: black;
-  opacity: .8;
+  opacity: .75;
+  height: 100%;
 }
 @media screen and (min-width: 992px) {
   .sidebar-content {
@@ -591,7 +592,7 @@ p.social {
   margin-top: 20px;
 }
 p.social a {
-  margin: 0 10px 10px 0;
+  margin: 0 5px 5px 0;
   color: #fff;
   display: inline-block;
   width: 40px;
@@ -672,19 +673,19 @@ COPYRIGHT
   font-size: 13px;
 }
 .copyright p.credit {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .copyright p.credit a {
   color: #999999;
 }
 @media (max-width: 991px) {
   .copyright p.credit {
-    text-align: center !important;
+    text-align: left !important;
   }
 }
 @media (max-width: 991px) {
   .copyright {
-    text-align: center !important;
+    text-align: left !important;
   }
 }
 /*

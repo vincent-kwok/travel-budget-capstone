@@ -161,6 +161,7 @@ var TripsShowPage = {
   template: "#trips-show-page",
   data: function() {
     return {
+
       trip: {
         user_id: "user_id",
         destination: "",
@@ -243,6 +244,8 @@ var ExpensesShowPage = {
       category: "",
       description: "",
       amount: "",
+      sortAttribute: "category",
+      sortAscending: true,
       currentExpense: {
         trip_id: this.trip_id,
         category: this.category,
@@ -290,9 +293,37 @@ var ExpensesShowPage = {
         var index = this.expenses.indexOf(inputExpense);
         this.expenses.splice(index, 1);
       }.bind(this));
+    },
+    setSortAttribute: function(inputSortAttribute) {
+      this.sortAttribute = inputSortAttribute;
+      this.sortAscending = !this.sortAscending;
     }
   },
-  computed: {}
+  computed: {
+    sortedExpenses: function() {
+      return this.expenses.sort(
+        function(expense1, expense2) {
+          if (this.sortAttribute === "amount") {
+            var lower1 = expense1[this.sortAttribute];
+            var lower2 = expense2[this.sortAttribute];
+            if (this.sortAscending) {
+              return lower1 - lower2;
+            } else {
+              return lower2 - lower1;
+            }
+          } else {
+            var lowerArribute1 = expense1[this.sortAttribute];
+            var lowerArribute2 = expense2[this.sortAttribute];
+            if (this.sortAscending) {
+              return lowerArribute1.localeCompare(lowerArribute2);
+            } else {
+              return lowerArribute2.localeCompare(lowerArribute1);
+            }
+          }
+        }.bind(this)
+      );
+    }
+  }
 };
 
 var SignupPage = {
