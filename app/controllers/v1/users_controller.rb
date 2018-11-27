@@ -18,5 +18,16 @@ class V1::UsersController < ApplicationController
     end
   end
 
+  def show
+    user_id = params["id"]
+    user = Trip.find_by(id: user_id)
+    render json: user.as_json
+  end
+
+  def destroy
+    user = User.find_by(id: params[:id])
+    user.destroy
+    render json: {message: "User has been deleted."}
+  end
   
 end

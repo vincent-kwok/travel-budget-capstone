@@ -1885,7 +1885,7 @@ label {
   border-color: #ddd;
 }
 /* pagination */
-.pagination {
+/*.pagination {
   margin: 24px 0;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   border-radius: 0;
@@ -1938,7 +1938,7 @@ label {
   color: #999999;
   background-color: #ffffff;
   border-color: #dddddd;
-}
+}*/
 /* responsive utilities */
 @media (max-width: 767px) {
   .text-center-xs {

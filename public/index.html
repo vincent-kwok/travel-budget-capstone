@@ -211,7 +211,7 @@
 
       <div class="form-group">
         <label>Destination:</label>
-        <input ref="autocomplete" placeholder="Search cities" type="text" class="form-control" onfocus="value = ''" v-model="destination">
+        <input ref="autocomplete" placeholder="Search cities" class="form-control" v-model="destination">
       </div>
 
       <div class="form-group">
@@ -292,7 +292,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button onclick="location.href='https://www.skyscanner.com/'" type="button" class="btn btn-primary">SkyScanner</button>
+            <button onclick="window.open('https://www.skyscanner.com/')" type="button" class="btn btn-primary">SkyScanner</button>
           </div>
 
         </div>
@@ -380,52 +380,49 @@
 
     <img src="us.png" alt="">
 
-
-
     <button class="btn btn-primary delete" v-on:click="deleteTrip(trip)" style="font-size: 14px; margin-top: 20px"><i class="fa fa-trash"></i> Delete Trip</button>
     <a class="btn btn-primary" href="/#/" style="font-size: 14px; margin-top: 20px"><i class="fa fa-arrow-left"></i>Back to All Trips</a>
   </div>
 </template>
 
-<!-- <template id="expenses-new-page">
-  <div class="vue-component">
-
-      <div class="form-group">
-        <input type="text" class="form-control" v-model="expense_category" value="travel"><input type="text" class="form-control" v-model="expense_description" value="Uber"><input type="text" class="form-control" v-model="expense_amount" value="$10">
-        <a class="btn btn-primary" v-on:click="submit()">Submit</a>
-      </div>
-
-    <a class="btn btn-primary" href="/#/">Back to all trips</a>
-  
-  </div>
-</template> -->
-
 <template id="expenses-show-page">
   <div class="vue-component">
-    <div class="threes">
-      <h5 style="margin-top: 0px;">CATEGORY <a class="fa fa-angle-down" v-on:click="setSortAttribute('category')"></a></h5>
-      <h5>DESCRIPTION <a class="fa fa-angle-down" v-on:click="setSortAttribute('description')"></a></h5>
-      <h5>AMOUNT <a class="fa fa-angle-down" v-on:click="setSortAttribute('amount')"></a></h5>
-    </div>
-    <div class="threes">
+
+    <div class="fours">
+      <h5>CATEGORY <a class="fa fa-angle-down" v-on:click="setSortAttribute('category')"></a></h5>
       <select class="form-control clear" v-model="category">
         <option value="food">food</option>
         <option value="entertainment">entertainment</option>
         <option value="travel">travel</option>
         <option value="accommodation">accommodation</option>
       </select>
+    </div>
+
+    <div class="fours">
+      <h5>DESCRIPTION <a class="fa fa-angle-down" v-on:click="setSortAttribute('description')"></a></h5>
       <input type="text" class="form-control clear" v-model="description">
+    </div>
+
+    <div class="fours">
+      <h5>AMOUNT <a class="fa fa-angle-down" v-on:click="setSortAttribute('amount')"></a></h5>
       <input type="number" class="form-control clear" v-model="amount">
-      <a class="btn btn-primary" v-on:click="submitExpense()" style="font-size: 14px"><i class="fa fa-plus"></i></a>
     </div>
-    <hr>
-    <div class="threes" v-for="expense in sortedExpenses" style="margin-top: 8px">
-      <h5 style="margin-top: 0px;">{{ expense.category }}</h5>
-      <h5>{{ expense.description }}</h5>
-      <h5>$ {{ expense.amount }}</h5>
-      <a class="btn btn-primary delete" v-on:click="deleteExpense(expense)" style="font-size: 14px"><i class="fa fa-trash"></i></a>
+
+    <div class="fours">
+      <a class="btn btn-primary" v-on:click="submitExpense()"><i class="fa fa-plus"></i></a>
     </div>
-    <a class="btn btn-primary" href="/#/" style="font-size: 14px"><i class="fa fa-arrow-left"></i>Back to Trips</a>
+    
+      <hr>
+
+      <div v-for="expense in sortedExpenses">
+        <h5 class="fours">{{ expense.category }}</h5>
+        <h5 class="fours" style="padding-top: 10px">{{ expense.description }}</h5>
+        <h5 class="fours" style="padding-top: 10px">{{ expense.amount }}</h5>
+        <a class="btn btn-primary delete fours" v-on:click="deleteExpense(expense)"><i class="fa fa-trash"></i></a>
+      </div>
+
+      <a class="btn btn-primary" href="/#/"><i class="fa fa-arrow-left"></i>Back to Trips</a>
+
   </div>
 </template>
 

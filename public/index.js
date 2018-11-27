@@ -91,14 +91,6 @@ var TripsNewPage = {
       airports: usAirports,
     };
   },
-  // created: function() {
-  //   // console.log(this.airports);
-  //   axios.get("http://developer.goibibo.com/api/search/?app_id=32e4551b&app_key=5a51d0b0ff157bae5674f87076e24c92&format=json&source=lga&destination=ord&dateofdeparture=20180602&dateofarrival=20180612&seatingclass=E&adults=1&children=0&infants=0&counter=100").then(
-  //     function(response) {
-  //       this.trips = response.data;
-  //     }.bind(this)
-  //   );
-  // },
   methods: {
     submit: function() {
       var params = {
@@ -138,8 +130,7 @@ var TripsNewPage = {
         .get("/v1/flights", {params: params})
         .then(function(response) {
           this.flights = response.data;
-        }.bind(this)
-        );
+        }.bind(this));
     },
     checkHotels: function() {
       var params = {
@@ -161,7 +152,6 @@ var TripsShowPage = {
   template: "#trips-show-page",
   data: function() {
     return {
-
       trip: {
         user_id: "user_id",
         destination: "",

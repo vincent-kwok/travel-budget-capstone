@@ -9,23 +9,20 @@ body {
   background: #eee;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   color: #000000;
-  border-radius: 5px;
 }
 
-.threes {
-  -webkit-column-count: 4; /* Chrome, Safari, Opera */
-  -moz-column-count: 4; /* Firefox */
-  column-count: 4;
-  line-height: 38px;
-}
-
-.twos {
-  column-count: 2;
+.fours {
+  -webkit-column-count: 4 auto;
+  -moz-column-count: 4 auto;
+  column-count: 4 auto;
+  column-width: 200px;
+  display: inline-block;
 }
 
 .delete {
   background-color: maroon;
   border-color: maroon;
+  width: 48px;
 }
 
 .delete:hover {
@@ -49,5 +46,10 @@ body {
 }
 
 .progress {
-    background-color: #ccc;
+    background-color: #D9D8D3;
+}
+
+select {
+  border-radius: 0;
+  -webkit-appearance: none;
 }

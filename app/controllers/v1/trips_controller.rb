@@ -1,17 +1,19 @@
 class V1::TripsController < ApplicationController
-  # before_action :authenticate_admin
-  # before_action :authenticate_user
+  before_action :authenticate_admin
+  before_action :authenticate_user
   
   def index
-    # trips = current_user.trips
-    trips = Trip.all
-    render json: trips.as_json
+    if current_user
+      trips = current_user.trips
+      render json: trips.as_json
+    else
+      render json: {message: "Please sign in first."}
+    end
   end
 
   def create
     trip = Trip.new(
-      # user_id: current_user.id,
-      user_id: 3,
+      user_id: current_user.id,
       destination: params[:destination],
       home_airport: params[:home_airport],
       destination_airport: params[:destination_airport],
@@ -30,8 +32,7 @@ class V1::TripsController < ApplicationController
   end
 
   def show
-    trip_id = params["id"]
-    trip = Trip.find_by(id: trip_id)
+    trip = Trip.find_by(id: params[:id])
     render json: trip.as_json
   end
 

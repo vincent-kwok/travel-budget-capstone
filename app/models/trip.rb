@@ -1,3 +1,5 @@
+require 'Date'
+
 class Trip < ApplicationRecord
   belongs_to :user
   has_many :expenses
@@ -64,15 +66,27 @@ class Trip < ApplicationRecord
   def actual_ratio
     actual_ratio = actual_expenses * 100 / budget_total
   end
-  
+
+  def s_date
+    x = start_date.to_s
+    a = x.split("-")
+    start_date = a[1] + "/" + a[2] + "/" + a[0]
+  end
+
+  def e_date
+    y = end_date.to_s
+    b = y.split("-")
+    end_date = b[1] + "/" + b[2] + "/" + b[0]
+  end
+
   def as_json
     {
       id: id,
       destination: destination,
       home_airport: home_airport,
       destination_airport: destination_airport,
-      start_date: start_date,
-      end_date: end_date,
+      start_date: s_date,
+      end_date: e_date,
 
       budget_flight: budget_flight,
       budget_accom: budget_accom,
