@@ -27,5 +27,8 @@
   "devDependencies": {
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15"
+  },
+  "overrides": {
+    "extend@<=3.0.2": "3.0.2"
   }
 }
